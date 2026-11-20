@@ -38,3 +38,43 @@ cat = Cat("Kitty")
 
 print(dog.name, dog.speak())  # Вывод: Buddy Woof
 print(cat.name, cat.speak())  # Вывод: Kitty Meow
+class Vehicle(ABC):
+     def move(self):
+         return "Vehicle is moving "
+class Car(Vehicle):
+    def move(self):
+        print("Car is driving ")
+class Bicycle(Vehicle):
+    def move(self):
+        print("Bicycle is pedaling ")
+def move(vehicle):
+    return vehicle.move()
+
+
+car = Car()
+bike = Bicycle()
+
+print(move(car))  # Вывод: Car is driving
+print(move(bike))  # Вывод: Bicycle is pedaling
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    def area(self):
+        return math.pi * self.radius **2
+rect = Rectangle(10, 5)
+circle = Circle(7)
+
+print(rect.area())  # Вывод: 50
+print(round(circle.area(), 2))  # Вывод: ~153.94
